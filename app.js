@@ -4,7 +4,6 @@ const exphbs = require("express-handlebars");
 const path = require("path");
 const favicon = require("serve-favicon");
 const logger = require("morgan");
-//const cookieParser = require("cookie-parser");
 const bodyParser = require("body-parser");
 const mongoose = require("mongoose");
 ////////////////////////GHENI'S///////////////////////////////////////////////
@@ -38,12 +37,8 @@ console.log(process.env[environment + "_db"]); //logs out current database
 app.use(logger("dev"));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
-//app.use(cookieParser());
 app.use(expressSanitizer());
 app.use(express.static(path.join(__dirname, "public")));
-
-// app.use("/", index);
-//app.use('/users', users);
 
 ////////////////GHENI'S////////////////////
 const store = new MongoDBStore({
@@ -64,9 +59,6 @@ app.use(
 );
 ////////////////////////////////////////////
 
-//////////////////////
-//////// DALE ////////
-//////////////////////
 const routes = require("./routes/html");
 app.use(routes);
 

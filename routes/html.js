@@ -16,7 +16,7 @@ router.get(
 
 // GET Detailers page
 router.get(
-  "/detail", function(req, res, next) {
+  "/detail", (req, res, next) => {
   res.render("detail", { message: "Detail" });
 });
 
@@ -42,7 +42,7 @@ router.get(
 
 router.get(
   "/account", (req, res, next) => {
-  res.render('myaccount');
+  res.render("myaccount");
 });
 
 // API routes

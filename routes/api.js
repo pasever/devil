@@ -24,16 +24,19 @@ router.put("/booking/", async function (req, res) {
 // });
 
 // Delete Booking after scheduled time
-router.delete("/booking/delete/:id", function (req, res) {
-    var id = req.params.id;
+router.delete("/booking/delete/:id", (req, res) => {
+    const id = req.params.id;
+    
     db.get().createCollection("menu", function (err, col) {
         col.deleteOne({
             _id: new mongodb.ObjectID(id)
         });
     });
+    
     res.json({
         success: id
     });
+
 });
 
 // Creating a new User
@@ -121,7 +124,7 @@ router.post(
 
     });
 
-    
+
 // Loging out the user
 router.get(
     '/user/logout', (req, res) => {
