@@ -5,8 +5,6 @@ const bcrypt = require("bcrypt");
 const expressSanitizer = require("express-sanitizer");
 const verifyUser = require("../helpers/verify");
 
-////////////////////GHENI'S///////////////////////////////////////////////
-
 module.exports = {
   
   /////////////////////////////////////CREATING A NEW UESR AND POSTING TO DB/////////////////////////////
@@ -28,8 +26,7 @@ module.exports = {
   },
   
   createBooking: function(id, booking) {
-    // console.log(id);
-    // console.log(booking);
+
     db.User.findOneAndUpdate(
       { _id: id },
       {
@@ -68,7 +65,7 @@ module.exports = {
         returnToRoute(error, isValidObject.user); 
   },
   
-  /////////////////////////////////////////lOADING USER PROFILE//////////////////////
+  ///////////////////////////////lOADING USER PROFILE//////////////////////
   userProfile: (req, res) => {
     
     const {
@@ -78,8 +75,6 @@ module.exports = {
    
     res.render("profile", {
       user
-    }); ///// LINE 90
+    });
   }
 };
-
-//////////////////////////////////////////////////////////////////

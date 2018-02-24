@@ -7,8 +7,6 @@ const bcrypt = require("bcrypt");
 const expressSanitizer = require("express-sanitizer");
 
 // API Routes
-//const userKey = "5a8cb19e452a483d703ba8b0";
-// Route to get info from company collection
 router.route("/detail").get(companyController.findAll);
 
 // Post booking info
@@ -25,7 +23,6 @@ router.put("/booking/", async function (req, res) {
 //   userController();
 // });
 
-//router.route("/booking").get(userController.getBooking);
 // Delete Booking after scheduled time
 router.delete("/booking/delete/:id", function (req, res) {
     var id = req.params.id;
@@ -39,8 +36,7 @@ router.delete("/booking/delete/:id", function (req, res) {
     });
 });
 
-// Create User
-
+// Creating a new User
 router.post(
         "/user/create", (req, res) => {
 
@@ -92,6 +88,7 @@ router.post(
 
 });
 
+// Logging in 
 router.post(
     '/user/login', (req, res) => {
 
@@ -124,8 +121,8 @@ router.post(
 
     });
 
+    
 // Loging out the user
-
 router.get(
     '/user/logout', (req, res) => {
 
@@ -139,12 +136,4 @@ router.get(
         }
 });
 
-// User Login
-router.route("/user/login/:id").get(userController.userLogin);
-
-// User Profile
-// router.route("/profile").get(userController.userProfile);
-
 module.exports = router;
-
-// DONT FORGET INDEX[0] for booking

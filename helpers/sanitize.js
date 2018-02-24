@@ -1,4 +1,5 @@
 const expressSanitizer = require("express-sanitizer");
+
 module.exports = async function sanitizeUser() {
   req.body.sanitized = {
     firstName: req.sanitize(req.body.firstName),
