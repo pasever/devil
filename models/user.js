@@ -6,23 +6,18 @@ const UserSchema = new Schema({
   firstName: {
     type: String,
     required: true,
-    trim: true,
-    validate:[ fn => fn && fn.length > 2, "Must be at least 2 characters long"]
+    trim: true
   },
   lastName: {
     type: String,
     required: true,
-    trim: true,
-    validate: [ln => ln && ln.lenght > 2, "Must be at least 2 characters long"]
+    trim: true
   },
   email: {
     type: String,
     trim: true,
     unique: true,
-    required: true,
-    validate: [function(email) {
-      return /^[a-zA-Z0-9.!#$%&’*+\/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/.test(email)
-    }, "'{VALUE}' is not a valid email"],
+    required: true
   },
   password: {
     type: String,

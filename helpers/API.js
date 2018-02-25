@@ -1,9 +1,9 @@
 const axios = require("axios");
 
 module.exports = {
-   
-    createUser:  data => {
+    createUser: function (data) {
         return axios.post("/api/user/create", data);
     }
-
 }
+
+// prob not needed

@@ -1,6 +1,6 @@
 <div class="container">
     <div class="navbar-header">
-        <a class="navbar-brand" href="#">
+        <a class="navbar-brand" href="/">
             <span class="glyphicon glyphicon-fire"></span>
             Detail Devil
         </a>
@@ -30,19 +30,22 @@
                 </a>
                 <ul class="dropdown-menu" role="menu">
                     <li role="presentation">
-                        <a role="menuitem" href="">Profile</a>
+                        <a role="menuitem" href="">My Profile</a>
                     </li>
                     <li role="presentation">
-                        <a role="menuitem" href="">Bookings</a>
+                        <a role="menuitem" href="">My Bookings</a>
+                    </li>
+                    <li role="presentation">
+                        <a role="menuitem" href="/detail">Book Now!</a>
                     </li>
                     <li class="divider"></li>
                     <li role="presentation">
                         <a role="menuitem" href="api/user/logout">Log Out</a>
                     </li>
                 </ul>
-            
+
                 {{else}}
-                <a href="/account">My Account</a>
+                <a href="/myaccount">My Account</a>
                 {{/if}}
             </li>
         </ul>
