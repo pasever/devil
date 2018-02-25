@@ -1,20 +1,16 @@
 require("dotenv").config();
-const express = require("express");
-const exphbs = require("express-handlebars");
-const path = require("path");
-const favicon = require("serve-favicon");
-const logger = require("morgan");
-const cookieParser = require("cookie-parser");
-const bodyParser = require("body-parser");
-const mongoose = require("mongoose");
-////////////////////////GHENI'S///////////////////////////////////////////////
-const session = require("express-session");
-const MongoDBStore = require("connect-mongodb-session")(session);
-//////////////////////////////////////////////////////////////////////////////
-const expressSanitizer = require("express-sanitizer");
-//const users = require('./routes/users');
-
-const app = express();
+     express = require("express"),
+      exphbs = require("express-handlebars"),
+        path = require("path"),
+     favicon = require("serve-favicon"),
+      logger = require("morgan"),
+  bodyParser = require("body-parser"),
+    mongoose = require("mongoose"),
+     session = require("express-session"),
+MongoDBStore = require("connect-mongodb-session")(session),
+expressSanitizer = require("express-sanitizer"),
+      routes = require("./routes/html"),
+         app = express();
 
 app.engine(
   ".handlebars",
@@ -27,25 +23,18 @@ app.engine(
 app.set("view engine", ".handlebars");
 
 // view engine setup
-// app.set('views', path.join(__dirname, 'views'));
-// app.set('view engine', 'hbs');
 const environment = process.env.NODE_ENV; //set env variable to node_devlopment - changes db location
 // console.log(process.env); //logs entire .env object
 console.log(process.env[environment + "_db"]); //logs out current database
 
 // uncomment after placing your favicon in /public
-//app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
 app.use(logger("dev"));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
-app.use(cookieParser());
 app.use(expressSanitizer());
 app.use(express.static(path.join(__dirname, "public")));
 
-// app.use("/", index);
-//app.use('/users', users);
-
-////////////////GHENI'S////////////////////
+////////////////Session Storage////////////////////
 const store = new MongoDBStore({
   uri: process.env.MONGODB_URI || "mongodb://localhost/DetailDevilDB",
   collection: "MySessions"
@@ -56,15 +45,15 @@ app.use(
     secret: "I love New York",
     resave: true,
     saveUninitialized: true,
-    store: store
+    store: store,
+    store: store,
+    cookie: {
+      maxAge: new Date(Date.now() + (60*60*1000))
+    }
   })
 );
 ////////////////////////////////////////////
 
-//////////////////////
-//////// DALE ////////
-//////////////////////
-const routes = require("./routes/html");
 app.use(routes);
 
 // catch 404 and forward to error handler
